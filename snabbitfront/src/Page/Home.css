@@ -1,0 +1,25 @@
+.carousel-container {
+    width: 100% !important;
+    height: 500px !important; 
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    background-color: #f8f9fa; 
+}
+.spotlight_content
+{
+    color: var(--secondary-color);
+}
+.spotlight_title
+{
+    color: var(--primary-color);
+}
+
+.home {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}

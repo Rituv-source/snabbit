@@ -1,0 +1,8 @@
+.carousel_title
+{
+    color: var(--primary-color);
+}
+.carousel_content
+{
+    color: var(--secondary-color);
+}

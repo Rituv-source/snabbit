@@ -1,0 +1,8 @@
+.Accordion_header
+{
+    color: var(--primary-color)!important;
+}
+.Accordion_body
+{
+    color: var(--secondary-color);
+}

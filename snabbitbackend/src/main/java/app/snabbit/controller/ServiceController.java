@@ -1,0 +1,65 @@
+package app.snabbit.controller;
+
+import app.snabbit.model.Cart;
+import app.snabbit.model.Login;
+import app.snabbit.model.ServiceEntity;
+import app.snabbit.service.CartItemService;
+import app.snabbit.service.LoginService;
+import app.snabbit.service.ServiceService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/api")
+public class ServiceController {
+
+    private final ServiceService serviceService;
+    private final CartItemService cartItemService;
+    private final LoginService loginService;
+
+    public ServiceController(ServiceService serviceService, CartItemService cartItemService, LoginService loginService) {
+        this.serviceService = serviceService;
+        this.cartItemService = cartItemService;
+        this.loginService = loginService;
+    }
+
+    @GetMapping("/service")
+    public List<ServiceEntity> getAllService() {
+        return serviceService.getAllServices();
+    }
+    @GetMapping("/admin/service")
+    public List<ServiceEntity> getAllServiceAdmin() {
+        return serviceService.getAllServicesAdmin();
+    }
+    @DeleteMapping("/service/{id}")
+    public ServiceEntity deleteServiceAdmin(@PathVariable("id") int id) {
+        return serviceService.deleteServiceById(id);
+    }
+    @DeleteMapping("/admin/service/{uniqueid}")
+    public ServiceEntity deleteService(@PathVariable("uniqueid") String uniqueid) {
+        return serviceService.deleteServiceByUniqueId(uniqueid);
+    }
+    @GetMapping("/cart")
+    public List<Cart> getAllCartItem()
+    {
+        return cartItemService.getAllCartItems();
+    }
+    @PostMapping("/cart")
+    public Cart addToCart(@RequestBody Cart cartItem)
+    {
+        return cartItemService.saveCartItem(cartItem);
+    }
+    @DeleteMapping("/cart/{uniqueid}")
+    public Cart deleteCartItem(@PathVariable("uniqueid") String uniqueid) {
+        return cartItemService.deleteCartItemById(uniqueid);
+    }
+
+    @GetMapping("/login")
+    public List<Login> getAllLogin()
+    {
+        return loginService.getAllLogin();
+    }
+
+}

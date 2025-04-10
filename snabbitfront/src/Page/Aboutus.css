@@ -1,0 +1,31 @@
+.aboutus {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.aboutus-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.aboutus-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.aboutus-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+.about_number{
+    color: var(--primary-color);
+}
+.about_title
+{
+    color: var(--secondary-color);
+}

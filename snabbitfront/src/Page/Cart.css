@@ -1,0 +1,24 @@
+.cart-title
+{
+    color: var(--primary-color);
+}
+.cart-title::after
+{
+    content: " 🛒";
+}
+.left-icon:hover
+{
+    border: 2px solid var(--secondary-color);
+    border-radius: 25%;
+}
+.card_collection
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 120px;
+}
+.Total_amount
+{
+    color: var(--primary-color);
+}

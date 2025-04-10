@@ -1,0 +1,19 @@
+body{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0px;
+  padding: 0px;
+  background-color:#ffffff;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root{
+  --primary-color: #FF2E6D;
+  --secondary-color: #5D0F36;
+}
+.btn
+{
+  font-size: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+}
