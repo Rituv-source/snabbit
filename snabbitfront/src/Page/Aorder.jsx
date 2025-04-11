@@ -1,44 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 function Aorder() {
-    const [bookings, setBookings] = useState([]);
-    const [status, setStatus] = useState('');
-    const fetchBookings = async () => {
-        try{
-            const response = await axios.get('http://localhost:8080/snabbitbackend/api/admin/booking', {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            });
-            setBookings(response.data);
-            console.log(response.data);
-        }catch(error){
-            console.error('Error fetching bookings:', error);
+  const [bookings, setBookings] = useState([]);
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+  const fetchBookings = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/snabbitbackend/api/admin/booking', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         }
+      });
+      setBookings(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error fetching bookings:', error);
     }
+  }
+  
   return (
     <>
-    <div className="order_title fs-1 ms-4">Order View</div>
-      <div className="order_list">
-      {bookings.map((item)=>(
-                    <div className="card ms-2 mb-3" key={item.id}>
-                        <div className="card-body">
-                            <p className="card-id">#{item.uniqueid}</p>
-                            <p className="card-useremail">{item.useremail}</p>
-                            <h5 className="card-title">{item.name}</h5>
-                            <p className="card-price">₹{item.price}</p>
-                            <div class="dropdown">
-                              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" value={item.status} onChange={(e) => setStatus(e.target.value)}>
-                                {item.status}
-                              </button>
-                              <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Confirmed</button></li>
-                                <li><button class="dropdown-item" type="button">Deliverd</button></li>
-                              </ul>
-                            </div>
-                        </div>
-                    </div>))}
+      <div className="order_title fs-1 ms-4 mb-3">Order View</div>
+      <div className="order_list row">
+        {bookings.map((item) => (
+          <div className="Acard ms-5 mb-3 border border-1 w-25 col-3 rounded-3 p-3 justify-items-center text-center" key={item.id}>
+            <div className="Acard-body">
+              <p className="Acard-id">#{item.uniqueid}</p>
+              <p className="Acard-useremail">{item.useremail}</p>
+              <h5 className="Acard-title">{item.name}</h5>
+              <p className="Acard-price">₹{item.price}</p>
+              <select
+                id="status"
+                value={item.status}>
+                <option value="Received">Received</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );

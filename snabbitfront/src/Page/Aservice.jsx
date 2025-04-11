@@ -79,11 +79,11 @@ function Aservice()
     return (
         <>  
             <section className="aservice">
-                <div className="cont_title fs-2 ms-4">Service change</div>
-                <div className="d-flex">
+                <div className="cont_title fs-2 ms-4 mb-5">Service change</div>
+                <div className="d-flex ">
                 <div className="admin_p col-8 ms-3 me-5">
                     {services.map((item)=>(
-                    <div className="card ms-2 mb-3" key={item.id}>
+                    <div className="card ms-5 mb-3" key={item.id}>
                         <div className="card-body">
                             <p className="card-id">#{item.uniqueid}</p>
                             <h5 className="card-title">{item.name}</h5>
@@ -97,7 +97,7 @@ function Aservice()
                     </div>))}
                 </div>
                 <div className="w-25">
-                <form className='border-1 rounded-3 border-dark border p-5 text-center' onSubmit={(e) => { e.preventDefault(); handlesubmit(); }} >
+                <form className='border-1 rounded-3 border-dark border p-3 text-center' onSubmit={(e) => { e.preventDefault(); handlesubmit(); }} >
                 <img src="https://snabbit.com/assets/snabbit-icon.svg" className='mb-5'/>
                 <div className="mb-3">
                     <label htmlFor="uniqueid" className="form-label">uniqueid</label>

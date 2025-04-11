@@ -34,7 +34,7 @@ function Login({setIsLogin,setUserEmail})
     
         if (user) {
             setUserEmail(user.email);
-            setIsLogin(true);
+            setTimeout(setIsLogin(true),10000);
         } else {
             alert("Invalid email or password");
         }

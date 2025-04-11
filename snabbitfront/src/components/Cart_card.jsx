@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-function Cart_card({ id,name, time, price, imageUrl, uniqueid,fetchCart_items,useremail }) {
+function Cart_card({name, time, price, imageUrl, uniqueid,fetchCart_items,useremail }) {
     const handleDelete = async () => {
         try {
                 await axios.delete(`http://localhost:8080/snabbitbackend/api/cart/${uniqueid}`);
@@ -10,21 +10,15 @@ function Cart_card({ id,name, time, price, imageUrl, uniqueid,fetchCart_items,us
             console.error('Error deleting cart item:', error);
         }
     };
-    const handlePay = async () => {
-        const paymentData = {
-            name,
-            price, 
-            uniqueid,
-            useremail,
-            id
-        };
+    const handlePay = async (e) => {
+        const paymentData = {name,price, uniqueid,useremail};
         try {
-                console.log("Payment data sent:", paymentData);
                 await axios.post("http://localhost:8080/snabbitbackend/api/admin/booking", paymentData, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
+                await axios.delete(`http://localhost:8080/snabbitbackend/api/cart/${uniqueid}`);
                 alert("Payment Successful");
                 fetchCart_items();
         } catch (error) {

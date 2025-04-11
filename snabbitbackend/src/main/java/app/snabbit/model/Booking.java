@@ -1,43 +1,44 @@
 package app.snabbit.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="booking")
 public class Booking {
     @Id
+    @JsonProperty("bookingid")
+    private int bookingid;
     @JsonProperty("uniqueid")
     private String uniqueid;
-    @JsonProperty("id")
-    private int id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("price")
     private int price;
     @JsonProperty("useremail")
     private String useremail;
+    @JsonProperty("status")
+    private String status;
     public Booking() {}
-    public Booking(String uniqueid, int id, String name, int price, String useremail) {
+    public Booking(int bookingid,String uniqueid, String name, int price, String useremail,String status) {
+        this.bookingid = bookingid;
         this.uniqueid = uniqueid;
-        this.id = id;
         this.name = name;
         this.price = price;
         this.useremail = useremail;
+        this.status=status;
+    }
+    public int getBookingid() {
+        return bookingid;
+    }
+    public void setBookingid(int bookingid) {
+        this.bookingid = bookingid;
     }
     public String getUniqueid() {
         return uniqueid;
     }
     public void setUniqueid(String uniqueid) {
         this.uniqueid = uniqueid;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public String getName() {
         return name;
@@ -51,11 +52,16 @@ public class Booking {
     public void setPrice(int price) {
         this.price = price;
     }
-    public String getUserEmail() {
+    public String getUseremail() {
         return useremail;
     }
-    public void setUserEmail(String useremail) {
+    public void setUseremail(String useremail) {
         this.useremail = useremail;
     }
-
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

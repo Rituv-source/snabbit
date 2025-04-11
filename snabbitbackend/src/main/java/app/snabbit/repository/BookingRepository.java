@@ -5,7 +5,7 @@ import app.snabbit.model.Booking;
 import java.util.List;
 
 public interface BookingRepository {
-    Booking add(Booking booking);
+    Booking save(Booking booking);
 
     List<Booking> getAll();
 }

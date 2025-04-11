@@ -72,7 +72,7 @@ public class ServiceController {
     @PostMapping("/admin/booking")
     public Booking saveBooking(@RequestBody Booking booking)
     {
-        return bookingService.addBooking(booking);
+        return bookingService.saveBooking(booking);
     }
     @GetMapping("/admin/booking")
     public List<Booking> getAllBooking()
