@@ -8,4 +8,5 @@ public interface ServiceService {
     ServiceEntity deleteServiceByUniqueId(String uniqueid);
     ServiceEntity deleteServiceById(int id);
     List<ServiceEntity> getAllServicesAdmin();
+    ServiceEntity savaServiceEntity(ServiceEntity serviceEntity);
 }

@@ -88,4 +88,7 @@ public class ServiceEntity {
     public void setUniqueid(String uniqueid) {
         this.uniqueid = uniqueid;
     }
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

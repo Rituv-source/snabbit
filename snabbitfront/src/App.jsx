@@ -32,7 +32,7 @@ function App() {
                 <Route path="Service" element={<Service/>} />
                 <Route path="Aboutus" element={<Aboutus />} />
                 <Route path="Contactus" element={<Contactus />} />
-                <Route path="Cart" element={<Cart />} />
+                <Route path="Cart" element={<Cart useremail={useremail}/>} />
                 <Route path="*" element={<div className='align-items-center text-center fs-1'>Page Not Found</div>} />
               </Route>
             </Routes>

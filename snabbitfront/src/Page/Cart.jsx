@@ -4,7 +4,7 @@ import Cart_card from '../components/Cart_card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 
-function Cart()
+function Cart({useremail})
 {
     const [cart_items,setCart_items] = useState([]);
     useEffect(() => {
@@ -45,6 +45,7 @@ function Cart()
                     imageUrl={item.imageUrl}
                     uniqueid={item.uniqueid}
                     fetchCart_items={fetchCart_items}
+                    useremail={useremail}
                     />))}
                  </div>
                  <div className="total_line border border-2 border-dark m-5 "></div>

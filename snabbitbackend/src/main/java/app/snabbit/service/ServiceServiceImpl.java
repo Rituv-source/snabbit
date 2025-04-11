@@ -37,6 +37,11 @@ public class ServiceServiceImpl implements ServiceService {
     }
 
     @Override
+    public ServiceEntity savaServiceEntity(ServiceEntity serviceEntity) {
+        return serviceRepository.save(serviceEntity);
+    }
+
+    @Override
     public ServiceEntity deleteServiceById(int id) {
         return serviceRepository.deleteById(id);
     }

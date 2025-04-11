@@ -59,4 +59,17 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                         rs.getString("uniqueid")
                 ));
     }
+
+    @Override
+    public ServiceEntity save(ServiceEntity serviceEntity) {
+        String sql = "INSERT INTO service (name, details, imageUrl, price, time, uniqueid) VALUES (?, ?, ?, ?,?,?)";
+        jdbcTemplate.update(sql,
+                serviceEntity.getName(),
+                serviceEntity.getDetails(),
+                serviceEntity.getImageUrl(),
+                serviceEntity.getPrice(),
+                serviceEntity.getTime(),
+                serviceEntity.getUniqueid());
+        return serviceEntity;
+    }
 }

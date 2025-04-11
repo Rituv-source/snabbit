@@ -1,8 +1,10 @@
 package app.snabbit.controller;
 
+import app.snabbit.model.Booking;
 import app.snabbit.model.Cart;
 import app.snabbit.model.Login;
 import app.snabbit.model.ServiceEntity;
+import app.snabbit.service.BookingService;
 import app.snabbit.service.CartItemService;
 import app.snabbit.service.LoginService;
 import app.snabbit.service.ServiceService;
@@ -18,16 +20,23 @@ public class ServiceController {
     private final ServiceService serviceService;
     private final CartItemService cartItemService;
     private final LoginService loginService;
+    private final BookingService bookingService;
 
-    public ServiceController(ServiceService serviceService, CartItemService cartItemService, LoginService loginService) {
+    public ServiceController(ServiceService serviceService, CartItemService cartItemService, LoginService loginService, BookingService bookingService) {
         this.serviceService = serviceService;
         this.cartItemService = cartItemService;
         this.loginService = loginService;
+        this.bookingService = bookingService;
     }
 
     @GetMapping("/service")
     public List<ServiceEntity> getAllService() {
         return serviceService.getAllServices();
+    }
+    @PostMapping("/service")
+    public ServiceEntity saveService(@RequestBody ServiceEntity serviceEntity)
+    {
+        return serviceService.savaServiceEntity(serviceEntity);
     }
     @GetMapping("/admin/service")
     public List<ServiceEntity> getAllServiceAdmin() {
@@ -47,8 +56,7 @@ public class ServiceController {
         return cartItemService.getAllCartItems();
     }
     @PostMapping("/cart")
-    public Cart addToCart(@RequestBody Cart cartItem)
-    {
+    public Cart addToCart(@RequestBody Cart cartItem) {
         return cartItemService.saveCartItem(cartItem);
     }
     @DeleteMapping("/cart/{uniqueid}")
@@ -61,5 +69,14 @@ public class ServiceController {
     {
         return loginService.getAllLogin();
     }
-
+    @PostMapping("/admin/booking")
+    public Booking saveBooking(@RequestBody Booking booking)
+    {
+        return bookingService.addBooking(booking);
+    }
+    @GetMapping("/admin/booking")
+    public List<Booking> getAllBooking()
+    {
+        return bookingService.getbooking();
+    }
 }

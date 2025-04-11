@@ -8,5 +8,5 @@ public interface ServiceRepository {
     ServiceEntity delete(String uniqueid);
     ServiceEntity deleteById(int id);
     List<ServiceEntity> findAllAdmin();
-
+    ServiceEntity save(ServiceEntity serviceEntity);
 }
