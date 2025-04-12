@@ -30,7 +30,31 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public List<Booking> getAll() {
         String sql = "SELECT * FROM booking";
-        return jdbcTemplate.query(sql, (rs, rowNum) ->
-                new Booking(rs.getInt("bookingid"),rs.getString("uniqueid"),  rs.getString("name"), rs.getInt("price"), rs.getString("useremail"),rs.getString("status")));
+        return jdbcTemplate.query(sql, (rs, rowNum) ->new Booking(rs.getInt("bookingid"),rs.getString("uniqueid"),  rs.getString("name"), rs.getInt("price"), rs.getString("useremail"),rs.getString("status")));
     }
+
+    @Override
+    public Booking update(String bookingid, String status) {
+        String sql = "UPDATE booking SET status = ? WHERE bookingid = ?";
+        jdbcTemplate.update(sql, status, bookingid);
+
+        String fetchSql = "SELECT * FROM booking WHERE bookingid = ?";
+        try {
+            return jdbcTemplate.queryForObject(fetchSql, new Object[]{bookingid}, (rs, rowNum) ->
+                    new Booking(
+                            rs.getInt("bookingid"),
+                            rs.getString("uniqueid"),
+                            rs.getString("name"),
+                            rs.getInt("price"),
+                            rs.getString("useremail"),
+                            rs.getString("status")
+                    )
+            );
+        } catch (Exception e) {
+            System.out.println("Booking not found or error fetching updated booking: " + e.getMessage());
+            return null;
+        }
+    }
+
+
 }

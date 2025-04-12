@@ -11,6 +11,7 @@ import app.snabbit.service.ServiceService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -79,4 +80,11 @@ public class ServiceController {
     {
         return bookingService.getbooking();
     }
+    @PutMapping("/admin/booking/{bookingid}")
+    public Booking updateBooking(@PathVariable("bookingid") String bookingid, @RequestBody Map<String, String> payload) {
+        String status = payload.get("status");
+        return bookingService.updateBooking(bookingid, status);
+    }
+
+
 }

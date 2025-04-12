@@ -23,4 +23,9 @@ public class BookingServiceImpl implements BookingService {
     public List<Booking> getbooking() {
         return bookingRepository.getAll();
     }
+
+    @Override
+    public Booking updateBooking(String bookingid,String status) {
+        return bookingRepository.update(bookingid,status);
+    }
 }

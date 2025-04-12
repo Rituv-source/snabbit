@@ -8,4 +8,6 @@ public interface BookingService {
     Booking saveBooking(Booking booking);
 
     List<Booking> getbooking();
+
+    Booking updateBooking(String bookingid,String status);
 }
